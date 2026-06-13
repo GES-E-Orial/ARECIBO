@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "GES Arecibo",
+  "short_name": "Arecibo",
+  "version": "2.3.1",
+  "description": "Good Enough Space - Identity-linked document signing for GES personnel. Countersign mission plans, launch clearances, and resource allocations directly from the portal.",
+  "author": "Good Enough Space - IT Security Division",
+  "icons": {
+    "16": "assets/icon-16.png",
+    "32": "assets/icon-32.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
+  },
+  "action": {
+    "default_title": "GES Arecibo",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon-16.png",
+      "32": "assets/icon-32.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "minimum_chrome_version": "108"
+}

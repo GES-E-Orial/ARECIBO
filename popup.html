@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GES Arecibo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 300px;
+      background: #0a0f1e;
+      color: #e2e8f0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 13px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px 10px;
+      border-bottom: 1px solid #1e2d4a;
+    }
+    .logo {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #7dd3fc;
+      background: #0d2040;
+      border: 1px solid #1e3a5f;
+      border-radius: 4px;
+      padding: 3px 7px;
+    }
+    .header-text { flex: 1; }
+    .title { font-size: 13px; font-weight: 600; color: #f0f6ff; }
+    .subtitle { font-size: 10px; color: #4a6080; margin-top: 1px; }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e88;
+    }
+
+    .employee-card {
+      padding: 12px 14px;
+      border-bottom: 1px solid #1e2d4a;
+      background: #0d1629;
+    }
+    .emp-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f0f6ff;
+    }
+    .emp-role {
+      font-size: 11px;
+      color: #4a6080;
+      margin-top: 3px;
+    }
+
+    .stats {
+      display: flex;
+      border-bottom: 1px solid #1e2d4a;
+    }
+    .stat {
+      flex: 1;
+      padding: 10px 14px;
+      border-right: 1px solid #1e2d4a;
+    }
+    .stat:last-child { border-right: none; }
+    .stat-val {
+      font-size: 18px;
+      font-weight: 700;
+      color: #7dd3fc;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-label {
+      font-size: 10px;
+      color: #4a6080;
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sign-section { padding: 12px 14px; }
+
+    .sign-btn {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      background: #1d4ed8;
+      color: #eff6ff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .sign-btn:hover { background: #2563eb; }
+    .sign-btn:active { background: #1e40af; }
+
+    .sig-output {
+      margin-top: 10px;
+      background: #0d1629;
+      border: 1px solid #1e3a5f;
+      border-radius: 5px;
+      padding: 8px 10px;
+    }
+    .sig-label {
+      font-size: 10px;
+      color: #4a6080;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 5px;
+    }
+    .sig-value {
+      font-family: "Cascadia Code", "Fira Code", monospace;
+      font-size: 10px;
+      color: #86efac;
+      word-break: break-all;
+      line-height: 1.5;
+    }
+    .copy-btn {
+      margin-top: 7px;
+      padding: 3px 10px;
+      font-size: 11px;
+      background: #1e2d4a;
+      color: #7dd3fc;
+      border: 1px solid #1e3a5f;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: #243650; }
+    .copy-btn.copied { color: #86efac; border-color: #22c55e44; }
+
+    .footer {
+      padding: 7px 14px;
+      font-size: 10px;
+      color: #2a3a54;
+      text-align: right;
+      border-top: 1px solid #111c30;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">GES</div>
+    <div class="header-text">
+      <div class="title">Arecibo</div>
+      <div class="subtitle">Good Enough Space</div>
+    </div>
+    <div class="dot" id="status-dot"></div>
+  </div>
+
+  <div class="employee-card">
+    <div class="emp-name" id="emp-name">-</div>
+    <div class="emp-role" id="emp-role">-</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-val" id="sig-count">0</div>
+      <div class="stat-label">Signatures</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val" id="last-sign">-</div>
+      <div class="stat-label">Last signed</div>
+    </div>
+  </div>
+
+  <div class="sign-section">
+    <button class="sign-btn" id="sign-btn">Generate Signature</button>
+
+    <div class="sig-output" id="sig-output" style="display:none">
+      <div class="sig-label">Envelope</div>
+      <div class="sig-value" id="sig-value"></div>
+      <button class="copy-btn" id="copy-btn">Copy</button>
+    </div>
+  </div>
+
+  <div class="footer" id="ver-label">v-</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
